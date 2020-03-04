@@ -21,12 +21,13 @@ class MovieViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    var isFavourite = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = movie.title
-        setFavouriteButtonItem()
+        
         tableView.register(
             UINib(nibName: "MovieInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "movieInfoCell")
         tableView.register(
@@ -39,6 +40,9 @@ class MovieViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        isFavourite = RealmHelper.shared.checkIsFavourite(type: MovieRealm.self, id: movie.id)
+        setFavouriteButtonItem(isFavourite)
         
         Notify.shared.listen(
             self,
@@ -84,17 +88,30 @@ class MovieViewController: UIViewController {
     
     // MARK: - Selector
     @objc func toggleFavourite(_ barBUttonItem: UIBarButtonItem) {
-        
+        isFavourite = RealmHelper.shared.addToFavourite(type: MovieRealm.self, movie: movie)
+        setFavouriteButtonItem(isFavourite)
     }
     
     // MARK: - Functions
-    private func setFavouriteButtonItem() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "ic_heart_outline")?.withRenderingMode(.alwaysOriginal),
-            style: .plain,
-            target: self,
-            action: #selector(toggleFavourite(_:)))
+    private func setFavouriteButtonItem(_ favourite: Bool) {
+        if favourite {
+            let favouriteItem = UIBarButtonItem(
+                image: UIImage(named: "ic_heart")?.withRenderingMode(.alwaysTemplate),
+                style: .plain,
+                target: self,
+                action: #selector(toggleFavourite(_:)))
+            favouriteItem.tintColor = UIColor.ntRed
+            navigationItem.rightBarButtonItem = favouriteItem
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(
+                image: UIImage(named: "ic_heart_outline")?.withRenderingMode(.alwaysOriginal),
+                style: .plain,
+                target: self,
+                action: #selector(toggleFavourite(_:)))
+        }
     }
+    
+    
 }
 
 // MARK: - UITableViewDataSource

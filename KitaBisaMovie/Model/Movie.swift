@@ -23,6 +23,7 @@ class Movie {
     var voteAverage: Float = 0.0
     var video: Bool = false
     var adult: Bool = false
+    var isFavourite: Bool = false
     var genreIds = [Int]()
     
     convenience init(_ data: JSON) {
@@ -41,5 +42,26 @@ class Movie {
         self.video = data["video"].boolValue
         self.adult = data["adult"].boolValue
         self.genreIds = data["genre_ids"].arrayValue.map { $0.intValue }   
+    }
+    
+    convenience init(_ data: MovieRealm) {
+        self.init()
+        self.id = data.id
+        self.title = data.title
+        self.originalTitle = data.originalTitle
+        self.overview = data.overview
+        self.originalLanguage = data.originalLanguage
+        self.posterPath = data.posterPath
+        self.backdropPath = data.backdropPath
+        self.releaseDate = data.releaseDate
+        self.popularity = data.popularity
+        self.voteCount = data.voteCount
+        self.voteAverage = data.voteAverage
+        self.video = data.video
+        self.adult = data.adult
+        self.isFavourite = data.isFavourite
+        var ids = [Int]()
+        data.genreIds.forEach { genreId in ids.append(genreId) }
+        self.genreIds = ids
     }
 }

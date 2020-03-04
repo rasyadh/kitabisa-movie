@@ -26,6 +26,8 @@
 		248B410B240FDCD700B3CCC7 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248B410A240FDCD700B3CCC7 /* Review.swift */; };
 		248B410E240FDE6C00B3CCC7 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248B410C240FDE6C00B3CCC7 /* ReviewTableViewCell.swift */; };
 		248B410F240FDE6C00B3CCC7 /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248B410D240FDE6C00B3CCC7 /* ReviewTableViewCell.xib */; };
+		248B4112240FEEF100B3CCC7 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248B4111240FEEF100B3CCC7 /* RealmHelper.swift */; };
+		248B4114240FEF4200B3CCC7 /* MovieRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248B4113240FEF4200B3CCC7 /* MovieRealm.swift */; };
 		24D2CD4D240F7E6E00CED69F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D2CD4C240F7E6E00CED69F /* AppDelegate.swift */; };
 		24D2CD54240F7E6F00CED69F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24D2CD52240F7E6F00CED69F /* Main.storyboard */; };
 		24D2CD56240F7E7A00CED69F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24D2CD55240F7E7A00CED69F /* Assets.xcassets */; };
@@ -60,6 +62,8 @@
 		248B410A240FDCD700B3CCC7 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		248B410C240FDE6C00B3CCC7 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		248B410D240FDE6C00B3CCC7 /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
+		248B4111240FEEF100B3CCC7 /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
+		248B4113240FEF4200B3CCC7 /* MovieRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRealm.swift; sourceTree = "<group>"; };
 		24D2CD49240F7E6E00CED69F /* KitaBisaMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KitaBisaMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D2CD4C240F7E6E00CED69F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24D2CD53240F7E6F00CED69F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		248B4110240FEED900B3CCC7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				248B4111240FEEF100B3CCC7 /* RealmHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		24D2CD40240F7E6E00CED69F = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +124,7 @@
 				24D2CD4C240F7E6E00CED69F /* AppDelegate.swift */,
 				24D2CD61240F7E9400CED69F /* Extensions */,
 				24D2CD60240F7E8C00CED69F /* Generals */,
+				248B4110240FEED900B3CCC7 /* Helpers */,
 				24D2CD63240F7EA100CED69F /* Model */,
 				24D2CD68240F7F1600CED69F /* Realm Models */,
 				24D2CD62240F7E9A00CED69F /* Views */,
@@ -211,6 +224,7 @@
 		24D2CD68240F7F1600CED69F /* Realm Models */ = {
 			isa = PBXGroup;
 			children = (
+				248B4113240FEF4200B3CCC7 /* MovieRealm.swift */,
 			);
 			path = "Realm Models";
 			sourceTree = "<group>";
@@ -357,6 +371,8 @@
 				248B40F5240F977800B3CCC7 /* UIView+Extension.swift in Sources */,
 				248B40FC240FA9C600B3CCC7 /* MovieCardTableViewCell.swift in Sources */,
 				248B4101240FCF8E00B3CCC7 /* MovieViewController.swift in Sources */,
+				248B4114240FEF4200B3CCC7 /* MovieRealm.swift in Sources */,
+				248B4112240FEEF100B3CCC7 /* RealmHelper.swift in Sources */,
 				248B40E5240F955B00B3CCC7 /* Formatter+Extension.swift in Sources */,
 				24D2CD6C240F847900CED69F /* Notify.swift in Sources */,
 				24D2CD70240F86E200CED69F /* Alertify.swift in Sources */,
