@@ -30,8 +30,10 @@ class Apify: NSObject {
     static let shared = Apify()
     var prevOperationData: [String: Any]?
     
-    fileprivate let API_BASE_URL = "https://api.themoviedb.org/3/"
+    fileprivate let API_BASE_URL = "https://api.themoviedb.org/3"
     fileprivate let API_KEY = "48cf77b80286d711e5ac8dfc4bce2cef"
+    fileprivate let IMG_BACKDROP_URL = "https://image.tmdb.org/t/p/w780"
+    fileprivate let IMG_POSTER_URL = "https://image.tmdb.org/t/p/w185"
     
     let API_MOVIE = "/movie"
     
@@ -77,15 +79,7 @@ class Apify: NSObject {
                     
                     // URL parsing or pre-delivery functions goes here
                     let responseJSON = try! JSON(data: response.data!)
-                    var addData: [String: Any]? = response.data == nil ? nil : ["json": responseJSON["results"]]
-                    if !responseJSON["page"].isEmpty && !responseJSON["total_pages"].isEmpty && !responseJSON["total_results"].isEmpty {
-                        let meta = [
-                            "page": responseJSON["page"],
-                            "total_pages": responseJSON["total_pages"],
-                            "total_results": responseJSON["total_results"],
-                        ]
-                        addData!["meta"] = JSON(meta)
-                    }
+                    let addData: [String: Any]? = self.handleResponseByRequestCode(response, responseJSON, code)
                     self.consolidation(code, success: true, additionalData: addData)
                 case .failure:
                     // Request error parsing
@@ -107,6 +101,49 @@ class Apify: NSObject {
                         return
                     }
                 }
+        }
+    }
+    
+    /**
+    Handle parsing response JSON based on RequestCode.
+    - Parameters:
+       - requestCode: RequestCode identifier
+       - response: response network call
+       - responseJSON: JSON Data response
+    - Returns: JSON Data
+    */
+    private func handleResponseByRequestCode(_ response: DataResponse<Any>, _ responseJSON: JSON, _ code: RequestCode) -> [String: Any]? {
+        var addData: [String: Any]?
+        if code == .getPopularMovies || code == .getUpcomingMovies || code == .getTopRatedMovies || code == .getNowPlayingMovies {
+            addData = response.data == nil ? nil : ["json": responseJSON["results"]]
+            if responseJSON["page"].exists() && responseJSON["total_pages"].exists() && responseJSON["total_results"].exists() {
+                let meta = [
+                    "page": responseJSON["page"],
+                    "total_pages": responseJSON["total_pages"],
+                    "total_results": responseJSON["total_results"],
+                ]
+                addData!["meta"] = JSON(meta)
+            }
+        }
+        return addData
+    }
+    
+    /**
+    Handle parsing response JSON based on RequestCode.
+    - Parameters:
+       - urlImage: String url image
+       - for: UIImageView component
+       - withImagePlaceholder: UIImage placeholder
+    */
+    func getImage(_ urlImage: String, for imageView: UIImageView, withImagePlaceholder imagePlaceholder: UIImage? = nil) {
+        let urlString = IMG_POSTER_URL + urlImage
+        if let url = URL(string: urlString) {
+            imageView.kf.indicatorType = .activity
+            if imagePlaceholder != nil {
+                imageView.kf.setImage(with: url, placeholder: imagePlaceholder)
+            } else {
+                imageView.kf.setImage(with: url, placeholder: nil)
+            }
         }
     }
     
@@ -145,17 +182,17 @@ class Apify: NSObject {
         
         switch requestCode {
         case .getPopularMovies:
-            if success { Storify.shared.storePopularMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
-            else { Notify.post(name: NotifName.getPopularMovies, sender: self, userInfo: dict) }
+            if success { Storify.shared.storeMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
+            else { Notify.post(name: NotifName.getMovies, sender: self, userInfo: dict) }
         case .getUpcomingMovies:
-            if success { Storify.shared.storeUpcomingMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
-            else { Notify.post(name: NotifName.getUpcomingMovies, sender: self, userInfo: dict) }
+            if success { Storify.shared.storeMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
+            else { Notify.post(name: NotifName.getMovies, sender: self, userInfo: dict) }
         case .getTopRatedMovies:
-            if success { Storify.shared.storeTopRatedMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
-            else { Notify.post(name: NotifName.getTopRatedMovies, sender: self, userInfo: dict) }
+            if success { Storify.shared.storeMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
+            else { Notify.post(name: NotifName.getMovies, sender: self, userInfo: dict) }
         case .getNowPlayingMovies:
-            if success { Storify.shared.storeNowPlayingMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
-            else { Notify.post(name: NotifName.getNowPlayingMovies, sender: self, userInfo: dict) }
+            if success { Storify.shared.storeMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
+            else { Notify.post(name: NotifName.getMovies, sender: self, userInfo: dict) }
         case .getMovieDetail:
             if success { Storify.shared.storeMovieDetail(dict["json"] as! JSON) }
             else { Notify.post(name: NotifName.getMovieDetail, sender: self, userInfo: dict) }

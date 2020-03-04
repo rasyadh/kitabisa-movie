@@ -22,3 +22,13 @@
 // MARK: - Alertify
 "alertify.ok" = "OK";
 "alertify.cancel" = "Cancel";
+
+// MARK: - Home Screen
+"home.button.category" = "Category";
+
+// MARK: - Category Action Sheet
+"category.action.popular" = "Popular";
+"category.action.upcoming" = "Upcoming";
+"category.action.top_rated" = "Top Rated";
+"category.action.now_playing" = "Now Playing";
+"category.action.cancel" = "Cancel";
