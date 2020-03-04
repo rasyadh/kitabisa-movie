@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  KitaBisaMovie
+
+  Created by Rasyadh Abdul Aziz on 04/03/20.
+  Copyright © 2020 rasyadh. All rights reserved.
+*/
+
+// MARK: - App
+"app.name" = "KitaBisa Movie";
+"app.version" = "Version";
+
+// MARK: - Field Validation
+"field_validation.invalid.title" = "Invalid Form";
+
+// MARK: - Messages Loading, Success, and Failure
+"messages.success" = "Success";
+"messages.failed.default.title" = "Oops...";
+"messages.failed.default.message" = "Please check your internet connection or try again later";
+"messages.failed.default.message_try" = "Please try again";
+
+// MARK: - Alertify
+"alertify.ok" = "OK";
+"alertify.cancel" = "Cancel";

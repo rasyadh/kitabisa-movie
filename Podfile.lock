@@ -1,0 +1,52 @@
+PODS:
+  - Alamofire (4.9.1)
+  - Cache (5.2.0)
+  - Imaginary (4.2.0):
+    - Cache (~> 5.0)
+  - Kingfisher (5.13.0):
+    - Kingfisher/Core (= 5.13.0)
+  - Kingfisher/Core (5.13.0)
+  - Lightbox (2.3.0):
+    - Imaginary (~> 4.0)
+  - Realm (4.3.2):
+    - Realm/Headers (= 4.3.2)
+  - Realm/Headers (4.3.2)
+  - RealmSwift (4.3.2):
+    - Realm (= 4.3.2)
+  - SVProgressHUD (2.2.5)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - Kingfisher
+  - Lightbox
+  - RealmSwift
+  - SVProgressHUD
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Cache
+    - Imaginary
+    - Kingfisher
+    - Lightbox
+    - Realm
+    - RealmSwift
+    - SVProgressHUD
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
+  Imaginary: dae33d06dbc2ada22f98afef5eb45cc061311a2c
+  Kingfisher: 0d334cada987fcddbe9b5cec516406e1ee9d4748
+  Lightbox: d317750e4132bfb871a5307cfe0a2c7d6a583c65
+  Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
+  RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: 6622efe9eb25ac91024e7aa042ffc351157ac02e
+
+COCOAPODS: 1.8.4
