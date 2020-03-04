@@ -35,7 +35,6 @@ class Movie {
         self.posterPath = data["poster_path"].stringValue
         self.backdropPath = data["backdrop_path"].stringValue
         self.releaseDate = data["release_date"].stringValue.toDate(format: "yyyy-MM-dd") ?? nil
-        
         self.popularity = data["popularity"].floatValue
         self.voteCount = data["vote_count"].intValue
         self.voteAverage = data["vote_average"].floatValue

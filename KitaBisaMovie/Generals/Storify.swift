@@ -18,14 +18,16 @@ enum CategorySortMovie {
 
 /**
  Class used to handle stored Data using Repository pattern.
-*/
+ */
 class Storify: NSObject {
     static let shared = Storify()
     
     // Paging
     var page = [String: JSON]()
     
+    var movie: Movie!
     var movies = [Movie]()
+    var reviews = [Review]()
     
     // MovieSortCategory
     var currentCategory: CategorySortMovie = .popular
@@ -41,10 +43,17 @@ class Storify: NSObject {
     }
     
     func storeMovieDetail(_ data: JSON) {
+        movie = Movie(data)
         Notify.post(name: NotifName.getMovieDetail, sender: self, userInfo: ["success": true])
     }
     
     func storeMovieReviews(_ data: JSON, _ meta: JSON) {
+        page["reviews"] = meta
+        if page["reviews"]!["page"].intValue == 1 {
+            reviews = data.arrayValue.map { Review($0) }
+        } else {
+            data.arrayValue.forEach { reviews.append(Review($0)) }
+        }
         Notify.post(name: NotifName.getMovieReviews, sender: self, userInfo: ["success": true])
     }
 }

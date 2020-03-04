@@ -58,15 +58,51 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GZi-4s-Dfp"/>
                     </view>
-                    <navigationItem key="navigationItem" id="mOb-oH-zQe"/>
+                    <navigationItem key="navigationItem" id="mOb-oH-zQe">
+                        <barButtonItem key="backBarButtonItem" title=" " id="HBF-t1-STl"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoryButton" destination="C5F-nj-P2r" id="xll-pe-lAY"/>
                         <outlet property="tableView" destination="oBf-z9-zbv" id="ixp-gh-n4h"/>
+                        <segue destination="sAV-bN-Q21" kind="show" identifier="showMovie" id="rb4-s9-thY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVJ-0b-E6b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076.8115942028987" y="138.61607142857142"/>
+        </scene>
+        <!--Movie View Controller-->
+        <scene sceneID="JKT-aQ-God">
+            <objects>
+                <viewController storyboardIdentifier="MovieViewController" id="sAV-bN-Q21" customClass="MovieViewController" customModule="KitaBisaMovie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2yf-GM-9ad">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="igS-FY-JLE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3Ub-NR-1cL" firstAttribute="trailing" secondItem="igS-FY-JLE" secondAttribute="trailing" id="8Mp-0d-dF5"/>
+                            <constraint firstItem="igS-FY-JLE" firstAttribute="top" secondItem="3Ub-NR-1cL" secondAttribute="top" id="BhQ-Mz-MTc"/>
+                            <constraint firstAttribute="bottom" secondItem="igS-FY-JLE" secondAttribute="bottom" id="rly-yE-daU"/>
+                            <constraint firstItem="igS-FY-JLE" firstAttribute="leading" secondItem="3Ub-NR-1cL" secondAttribute="leading" id="zGa-XA-5ij"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Ub-NR-1cL"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qof-Pd-Qis">
+                        <barButtonItem key="backBarButtonItem" title=" " id="LdW-tu-jz7"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="igS-FY-JLE" id="dXb-Q8-Fkh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7y5-rR-FTv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2012" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gYk-Jm-N7y">
@@ -76,6 +112,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Ud1-Ly-N2s">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.14117647058823529" green="0.59215686274509804" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

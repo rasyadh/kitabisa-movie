@@ -42,9 +42,9 @@ class Apify: NSObject {
     /**
      Create headers for http request.
      - Parameters:
-        - withAuthorization: Bool indicate usage of Authorization in headers
-        - withXApiKey: Bool indicate usage of X-Api-Key in headers
-        - accept: String indicate defined Accept in headers, default set to application/json
+     - withAuthorization: Bool indicate usage of Authorization in headers
+     - withXApiKey: Bool indicate usage of X-Api-Key in headers
+     - accept: String indicate defined Accept in headers, default set to application/json
      - Returns: Map of headers value
      */
     fileprivate func getHeaders(accept: String? = nil) -> [String: String] {
@@ -60,11 +60,11 @@ class Apify: NSObject {
     /**
      Asynchronous networking http request.
      - Parameters:
-        - url: String url endpoint API
-        - method: HTTPMethod used for request
-        - parameters: Body used for the request
-        - headers: Headers used for the request
-        - code: RequestCode identifier
+     - url: String url endpoint API
+     - method: HTTPMethod used for request
+     - parameters: Body used for the request
+     - headers: Headers used for the request
+     - code: RequestCode identifier
      */
     private func request(_ url: String, method: HTTPMethod, parameters: [String: String]?, headers: [String: String]?, code: RequestCode) {
         // Perform request
@@ -105,16 +105,21 @@ class Apify: NSObject {
     }
     
     /**
-    Handle parsing response JSON based on RequestCode.
-    - Parameters:
-       - requestCode: RequestCode identifier
-       - response: response network call
-       - responseJSON: JSON Data response
-    - Returns: JSON Data
-    */
+     Handle parsing response JSON based on RequestCode.
+     - Parameters:
+     - requestCode: RequestCode identifier
+     - response: response network call
+     - responseJSON: JSON Data response
+     - Returns: JSON Data
+     */
     private func handleResponseByRequestCode(_ response: DataResponse<Any>, _ responseJSON: JSON, _ code: RequestCode) -> [String: Any]? {
         var addData: [String: Any]?
-        if code == .getPopularMovies || code == .getUpcomingMovies || code == .getTopRatedMovies || code == .getNowPlayingMovies {
+        switch code {
+        case .getPopularMovies,
+             .getUpcomingMovies,
+             .getTopRatedMovies,
+             .getNowPlayingMovies,
+             .getMovieReviews:
             addData = response.data == nil ? nil : ["json": responseJSON["results"]]
             if responseJSON["page"].exists() && responseJSON["total_pages"].exists() && responseJSON["total_results"].exists() {
                 let meta = [
@@ -124,17 +129,21 @@ class Apify: NSObject {
                 ]
                 addData!["meta"] = JSON(meta)
             }
+            break
+        case .getMovieDetail:
+            addData = response.data == nil ? nil : ["json": responseJSON]
+            break
         }
         return addData
     }
     
     /**
-    Handle parsing response JSON based on RequestCode.
-    - Parameters:
-       - urlImage: String url image
-       - for: UIImageView component
-       - withImagePlaceholder: UIImage placeholder
-    */
+     Handle parsing response JSON based on RequestCode.
+     - Parameters:
+     - urlImage: String url image
+     - for: UIImageView component
+     - withImagePlaceholder: UIImage placeholder
+     */
     func getImage(_ urlImage: String, for imageView: UIImageView, withImagePlaceholder imagePlaceholder: UIImage? = nil) {
         let urlString = IMG_POSTER_URL + urlImage
         if let url = URL(string: urlString) {
@@ -150,9 +159,9 @@ class Apify: NSObject {
     /**
      Handle parsing response JSON to standard format.
      - Parameters:
-        - requestCode: RequestCode identifier
-        - success: Bool indicating request status
-        - additionalData: JSON Data
+     - requestCode: RequestCode identifier
+     - success: Bool indicating request status
+     - additionalData: JSON Data
      */
     private func consolidation(_ requestCode: RequestCode, success: Bool, additionalData: [String: Any]? = nil) {
         var dict = [String: Any]()
@@ -247,7 +256,7 @@ class Apify: NSObject {
     }
     
     func getMovieDetail(id: Int) {
-        let URL = API_BASE_URL + API_MOVIE + "/\(id)"
+        let URL = API_BASE_URL + API_MOVIE + "/\(id)?api_key=\(API_KEY)&language=en-US"
         
         request(
             URL,
@@ -257,8 +266,8 @@ class Apify: NSObject {
             code: .getMovieDetail)
     }
     
-    func getMovieReviews(id: Int) {
-        let URL = API_BASE_URL + API_MOVIE + "/\(id)/reviews"
+    func getMovieReviews(id: Int, page: Int = 1) {
+        let URL = API_BASE_URL + API_MOVIE + "/\(id)/reviews?api_key=\(API_KEY)&language=en-US&page=\(page)"
         
         request(
             URL,

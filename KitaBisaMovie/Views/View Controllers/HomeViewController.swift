@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     // MARK: - Outlet Instance
     var refreshControl = UIRefreshControl()
     
+    // MARK: - Variables
     var movies = [Movie]() {
         didSet {
             tableView.reloadData()
@@ -60,6 +61,14 @@ class HomeViewController: UIViewController {
         
         SVProgressHUD.dismiss()
         Notify.shared.removeListener(self)
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMovie" {
+            let viewController = segue.destination as? MovieViewController
+            viewController?.movie = movies[(tableView!.indexPathForSelectedRow!).row]
+        }
     }
     
     // MARK: - Notification Handler
@@ -142,10 +151,10 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return createMovieCard(tableView, cellForRowAt: indexPath)
+        return createMovieCard(tableView, indexPath)
     }
     
-    func createMovieCard(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func createMovieCard(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "movieCardCell", for: indexPath)
             as! MovieCardTableViewCell
@@ -170,6 +179,7 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showMovie", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
