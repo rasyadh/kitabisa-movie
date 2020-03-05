@@ -12,10 +12,7 @@ import UIKit
  Notification Center Identifiers.
  */
 struct NotifName {
-    static let getPopularMovies = Notification.Name("getPopularMovies")
-    static let getUpcomingMovies = Notification.Name("getPopularMovies")
-    static let getTopRatedMovies = Notification.Name("getTopRatedMovies")
-    static let getNowPlayingMovies = Notification.Name("getNowPlayingMovies")
+    static let getMovies = Notification.Name("getMovies")
     static let getMovieDetail = Notification.Name("getMovieDetail")
     static let getMovieReviews = Notification.Name("getMovieReviews")
 }

@@ -30,8 +30,10 @@ class Apify: NSObject {
     static let shared = Apify()
     var prevOperationData: [String: Any]?
     
-    fileprivate let API_BASE_URL = "https://api.themoviedb.org/3/"
+    fileprivate let API_BASE_URL = "https://api.themoviedb.org/3"
     fileprivate let API_KEY = "48cf77b80286d711e5ac8dfc4bce2cef"
+    fileprivate let IMG_BACKDROP_URL = "https://image.tmdb.org/t/p/w780"
+    fileprivate let IMG_POSTER_URL = "https://image.tmdb.org/t/p/w185"
     
     let API_MOVIE = "/movie"
     
@@ -40,9 +42,9 @@ class Apify: NSObject {
     /**
      Create headers for http request.
      - Parameters:
-        - withAuthorization: Bool indicate usage of Authorization in headers
-        - withXApiKey: Bool indicate usage of X-Api-Key in headers
-        - accept: String indicate defined Accept in headers, default set to application/json
+     - withAuthorization: Bool indicate usage of Authorization in headers
+     - withXApiKey: Bool indicate usage of X-Api-Key in headers
+     - accept: String indicate defined Accept in headers, default set to application/json
      - Returns: Map of headers value
      */
     fileprivate func getHeaders(accept: String? = nil) -> [String: String] {
@@ -58,11 +60,11 @@ class Apify: NSObject {
     /**
      Asynchronous networking http request.
      - Parameters:
-        - url: String url endpoint API
-        - method: HTTPMethod used for request
-        - parameters: Body used for the request
-        - headers: Headers used for the request
-        - code: RequestCode identifier
+     - url: String url endpoint API
+     - method: HTTPMethod used for request
+     - parameters: Body used for the request
+     - headers: Headers used for the request
+     - code: RequestCode identifier
      */
     private func request(_ url: String, method: HTTPMethod, parameters: [String: String]?, headers: [String: String]?, code: RequestCode) {
         // Perform request
@@ -77,15 +79,7 @@ class Apify: NSObject {
                     
                     // URL parsing or pre-delivery functions goes here
                     let responseJSON = try! JSON(data: response.data!)
-                    var addData: [String: Any]? = response.data == nil ? nil : ["json": responseJSON["results"]]
-                    if !responseJSON["page"].isEmpty && !responseJSON["total_pages"].isEmpty && !responseJSON["total_results"].isEmpty {
-                        let meta = [
-                            "page": responseJSON["page"],
-                            "total_pages": responseJSON["total_pages"],
-                            "total_results": responseJSON["total_results"],
-                        ]
-                        addData!["meta"] = JSON(meta)
-                    }
+                    let addData: [String: Any]? = self.handleResponseByRequestCode(response, responseJSON, code)
                     self.consolidation(code, success: true, additionalData: addData)
                 case .failure:
                     // Request error parsing
@@ -111,11 +105,63 @@ class Apify: NSObject {
     }
     
     /**
+     Handle parsing response JSON based on RequestCode.
+     - Parameters:
+     - requestCode: RequestCode identifier
+     - response: response network call
+     - responseJSON: JSON Data response
+     - Returns: JSON Data
+     */
+    private func handleResponseByRequestCode(_ response: DataResponse<Any>, _ responseJSON: JSON, _ code: RequestCode) -> [String: Any]? {
+        var addData: [String: Any]?
+        switch code {
+        case .getPopularMovies,
+             .getUpcomingMovies,
+             .getTopRatedMovies,
+             .getNowPlayingMovies,
+             .getMovieReviews:
+            addData = response.data == nil ? nil : ["json": responseJSON["results"]]
+            if responseJSON["page"].exists() && responseJSON["total_pages"].exists() && responseJSON["total_results"].exists() {
+                let meta = [
+                    "page": responseJSON["page"],
+                    "total_pages": responseJSON["total_pages"],
+                    "total_results": responseJSON["total_results"],
+                ]
+                addData!["meta"] = JSON(meta)
+            }
+            break
+        case .getMovieDetail:
+            addData = response.data == nil ? nil : ["json": responseJSON]
+            break
+        }
+        return addData
+    }
+    
+    /**
+     Handle parsing response JSON based on RequestCode.
+     - Parameters:
+     - urlImage: String url image
+     - for: UIImageView component
+     - withImagePlaceholder: UIImage placeholder
+     */
+    func getImage(_ urlImage: String, for imageView: UIImageView, withImagePlaceholder imagePlaceholder: UIImage? = nil) {
+        let urlString = IMG_POSTER_URL + urlImage
+        if let url = URL(string: urlString) {
+            imageView.kf.indicatorType = .activity
+            if imagePlaceholder != nil {
+                imageView.kf.setImage(with: url, placeholder: imagePlaceholder)
+            } else {
+                imageView.kf.setImage(with: url, placeholder: nil)
+            }
+        }
+    }
+    
+    /**
      Handle parsing response JSON to standard format.
      - Parameters:
-        - requestCode: RequestCode identifier
-        - success: Bool indicating request status
-        - additionalData: JSON Data
+     - requestCode: RequestCode identifier
+     - success: Bool indicating request status
+     - additionalData: JSON Data
      */
     private func consolidation(_ requestCode: RequestCode, success: Bool, additionalData: [String: Any]? = nil) {
         var dict = [String: Any]()
@@ -145,17 +191,17 @@ class Apify: NSObject {
         
         switch requestCode {
         case .getPopularMovies:
-            if success { Storify.shared.storePopularMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
-            else { Notify.post(name: NotifName.getPopularMovies, sender: self, userInfo: dict) }
+            if success { Storify.shared.storeMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
+            else { Notify.post(name: NotifName.getMovies, sender: self, userInfo: dict) }
         case .getUpcomingMovies:
-            if success { Storify.shared.storeUpcomingMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
-            else { Notify.post(name: NotifName.getUpcomingMovies, sender: self, userInfo: dict) }
+            if success { Storify.shared.storeMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
+            else { Notify.post(name: NotifName.getMovies, sender: self, userInfo: dict) }
         case .getTopRatedMovies:
-            if success { Storify.shared.storeTopRatedMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
-            else { Notify.post(name: NotifName.getTopRatedMovies, sender: self, userInfo: dict) }
+            if success { Storify.shared.storeMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
+            else { Notify.post(name: NotifName.getMovies, sender: self, userInfo: dict) }
         case .getNowPlayingMovies:
-            if success { Storify.shared.storeNowPlayingMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
-            else { Notify.post(name: NotifName.getNowPlayingMovies, sender: self, userInfo: dict) }
+            if success { Storify.shared.storeMovies(dict["json"] as! JSON, dict["meta"] as! JSON) }
+            else { Notify.post(name: NotifName.getMovies, sender: self, userInfo: dict) }
         case .getMovieDetail:
             if success { Storify.shared.storeMovieDetail(dict["json"] as! JSON) }
             else { Notify.post(name: NotifName.getMovieDetail, sender: self, userInfo: dict) }
@@ -210,7 +256,7 @@ class Apify: NSObject {
     }
     
     func getMovieDetail(id: Int) {
-        let URL = API_BASE_URL + API_MOVIE + "/\(id)"
+        let URL = API_BASE_URL + API_MOVIE + "/\(id)?api_key=\(API_KEY)&language=en-US"
         
         request(
             URL,
@@ -220,8 +266,8 @@ class Apify: NSObject {
             code: .getMovieDetail)
     }
     
-    func getMovieReviews(id: Int) {
-        let URL = API_BASE_URL + API_MOVIE + "/\(id)/reviews"
+    func getMovieReviews(id: Int, page: Int = 1) {
+        let URL = API_BASE_URL + API_MOVIE + "/\(id)/reviews?api_key=\(API_KEY)&language=en-US&page=\(page)"
         
         request(
             URL,

@@ -19,6 +19,27 @@
 "messages.failed.default.message" = "Please check your internet connection or try again later";
 "messages.failed.default.message_try" = "Please try again";
 
+// MARK: - Empty State
+"empty_state.movies.title" = "There's no movies yet";
+"empty_state.favourite_movies.title" = "There's no favourite movies yet";
+
 // MARK: - Alertify
 "alertify.ok" = "OK";
 "alertify.cancel" = "Cancel";
+
+// MARK: - Home Screen
+"home.button.category" = "Category";
+
+// MARK: - Category Action Sheet
+"category.action.popular" = "Popular";
+"category.action.upcoming" = "Upcoming";
+"category.action.top_rated" = "Top Rated";
+"category.action.now_playing" = "Now Playing";
+"category.action.cancel" = "Cancel";
+
+// MARK: - Movie Screen
+"movie.label.overview" = "Overview";
+"movie.label.review" = "Review";
+
+// MARK: - Favourite Screen
+"favourite_movie.title" = "Favourite Movie";
