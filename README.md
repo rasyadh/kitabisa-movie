@@ -1,6 +1,12 @@
 # KitaBisa Movie
 Movie list application, [implementing The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction)
 
+<div align="center">
+<img src="https://raw.githubusercontent.com/rasyadh/kitabisa-movie/master/Screenshots/home.png" height="500">
+<img src="https://raw.githubusercontent.com/rasyadh/kitabisa-movie/master/Screenshots/movie.png" height="500">
+<img src="https://raw.githubusercontent.com/rasyadh/kitabisa-movie/master/Screenshots/favourite.png" height="500">
+</div>
+
 ## Technology Stack
 * Xcode 11.3
 * Swift 4.2
