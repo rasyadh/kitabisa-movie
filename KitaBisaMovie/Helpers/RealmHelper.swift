@@ -86,7 +86,15 @@ class RealmHelper {
         }
     }
     
-    func getFavouriteMovies(type: Object.Type, id: Int) -> Results<Object>? {
-        return getObjects(type: type)
+    func getFavouriteMovies(type: Object.Type) -> [Movie] {
+        var movies = [Movie]()
+        if let results = getObjects(type: type) {
+            for movieRealm in results {
+                if let movie = movieRealm as? MovieRealm {
+                    movies.append(Movie(movie))
+                }
+            }
+        }
+        return movies
     }
 }

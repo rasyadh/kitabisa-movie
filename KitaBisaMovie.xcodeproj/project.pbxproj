@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		245AAF1F2410942000EACE1B /* FavouriteMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AAF1E2410942000EACE1B /* FavouriteMoviesViewController.swift */; };
 		248B40E5240F955B00B3CCC7 /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248B40E4240F955B00B3CCC7 /* Formatter+Extension.swift */; };
 		248B40E7240F95D900B3CCC7 /* Localify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248B40E6240F95D900B3CCC7 /* Localify.swift */; };
 		248B40EA240F970300B3CCC7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 248B40EC240F970300B3CCC7 /* Localizable.strings */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		208C8401AC59D0C188852445 /* Pods_KitaBisaMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitaBisaMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		245AAF1E2410942000EACE1B /* FavouriteMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteMoviesViewController.swift; sourceTree = "<group>"; };
 		248B40E4240F955B00B3CCC7 /* Formatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extension.swift"; sourceTree = "<group>"; };
 		248B40E6240F95D900B3CCC7 /* Localify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localify.swift; sourceTree = "<group>"; };
 		248B40EB240F970300B3CCC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		24D2CD66240F7EB600CED69F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				245AAF1E2410942000EACE1B /* FavouriteMoviesViewController.swift */,
 				24D2CD73240F884C00CED69F /* HomeViewController.swift */,
 				24D2CD71240F87A000CED69F /* ManagerViewController.swift */,
 				248B4100240FCF8E00B3CCC7 /* MovieViewController.swift */,
@@ -386,6 +389,7 @@
 				248B410B240FDCD700B3CCC7 /* Review.swift in Sources */,
 				248B40F3240F975000B3CCC7 /* String+Extension.swift in Sources */,
 				248B4104240FD59D00B3CCC7 /* MovieInfoTableViewCell.swift in Sources */,
+				245AAF1F2410942000EACE1B /* FavouriteMoviesViewController.swift in Sources */,
 				248B410E240FDE6C00B3CCC7 /* ReviewTableViewCell.swift in Sources */,
 				24D2CD72240F87A000CED69F /* ManagerViewController.swift in Sources */,
 				248B40FF240FB57200B3CCC7 /* Movie.swift in Sources */,

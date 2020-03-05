@@ -65,11 +65,46 @@
                         <outlet property="categoryButton" destination="C5F-nj-P2r" id="xll-pe-lAY"/>
                         <outlet property="tableView" destination="oBf-z9-zbv" id="ixp-gh-n4h"/>
                         <segue destination="sAV-bN-Q21" kind="show" identifier="showMovie" id="rb4-s9-thY"/>
+                        <segue destination="Kfv-Yb-tsj" kind="show" identifier="showFavouriteMovies" id="kK0-31-KVt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVJ-0b-E6b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076.8115942028987" y="138.61607142857142"/>
+        </scene>
+        <!--Favourite Movies View Controller-->
+        <scene sceneID="hYe-jH-NO8">
+            <objects>
+                <viewController storyboardIdentifier="FavouriteMoviesViewController" id="Kfv-Yb-tsj" customClass="FavouriteMoviesViewController" customModule="KitaBisaMovie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i9u-L7-Zx6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zQj-LA-GsR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sPj-yh-9xM" firstAttribute="trailing" secondItem="zQj-LA-GsR" secondAttribute="trailing" id="Bpz-JZ-f1x"/>
+                            <constraint firstItem="zQj-LA-GsR" firstAttribute="leading" secondItem="sPj-yh-9xM" secondAttribute="leading" id="KYC-eJ-nSP"/>
+                            <constraint firstAttribute="bottom" secondItem="zQj-LA-GsR" secondAttribute="bottom" id="lQJ-qv-BWw"/>
+                            <constraint firstItem="zQj-LA-GsR" firstAttribute="top" secondItem="sPj-yh-9xM" secondAttribute="top" id="vv6-xc-9Dg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sPj-yh-9xM"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RZM-TJ-emO">
+                        <barButtonItem key="backBarButtonItem" title=" " id="7Yq-jY-a9R"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="zQj-LA-GsR" id="rHx-Et-oh1"/>
+                        <segue destination="sAV-bN-Q21" kind="show" identifier="showMovie" id="3JS-FO-vJ5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6mM-g3-xpb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1077" y="863"/>
         </scene>
         <!--Movie View Controller-->
         <scene sceneID="JKT-aQ-God">
@@ -128,4 +163,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="3JS-FO-vJ5"/>
+    </inferredMetricsTieBreakers>
 </document>

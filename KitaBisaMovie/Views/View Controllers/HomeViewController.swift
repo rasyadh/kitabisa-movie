@@ -84,7 +84,7 @@ class HomeViewController: UIViewController {
     
     // MARK: - Selector
     @objc func favouriteMovies(_ barButtonItem: UIBarButtonItem) {
-        print("Favourite Movies")
+        performSegue(withIdentifier: "showFavouriteMovies", sender: self)
     }
     
     @objc private func refreshData(_ sender: UIRefreshControl) {
