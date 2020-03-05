@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24583EAE2411149D008D0780 /* KitaBisaMovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24583EAD2411149D008D0780 /* KitaBisaMovieUITests.swift */; };
+		24583EB62411150A008D0780 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24583EB52411150A008D0780 /* XCUIApplication+Extension.swift */; };
+		24583EB72411157D008D0780 /* Localify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248B40E6240F95D900B3CCC7 /* Localify.swift */; };
+		24583EB824111AE6008D0780 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 248B40EC240F970300B3CCC7 /* Localizable.strings */; };
 		245AAF1F2410942000EACE1B /* FavouriteMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AAF1E2410942000EACE1B /* FavouriteMoviesViewController.swift */; };
 		245AAF2124109EAC00EACE1B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AAF2024109EAC00EACE1B /* UITableView+Extension.swift */; };
 		245AAF2424109ED800EACE1B /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AAF2224109ED800EACE1B /* EmptyTableViewCell.swift */; };
@@ -45,8 +49,22 @@
 		E58C89996FC7BFCC472E2498 /* Pods_KitaBisaMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 208C8401AC59D0C188852445 /* Pods_KitaBisaMovie.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		24583EB02411149D008D0780 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24D2CD41240F7E6E00CED69F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24D2CD48240F7E6E00CED69F;
+			remoteInfo = KitaBisaMovie;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		208C8401AC59D0C188852445 /* Pods_KitaBisaMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitaBisaMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24583EAB2411149D008D0780 /* KitaBisaMovieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KitaBisaMovieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		24583EAD2411149D008D0780 /* KitaBisaMovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitaBisaMovieUITests.swift; sourceTree = "<group>"; };
+		24583EAF2411149D008D0780 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24583EB52411150A008D0780 /* XCUIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extension.swift"; sourceTree = "<group>"; };
 		245AAF1E2410942000EACE1B /* FavouriteMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteMoviesViewController.swift; sourceTree = "<group>"; };
 		245AAF2024109EAC00EACE1B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		245AAF2224109ED800EACE1B /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
@@ -89,6 +107,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		24583EA82411149D008D0780 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		24D2CD46240F7E6E00CED69F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -100,6 +125,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24583EAC2411149D008D0780 /* KitaBisaMovieUITests */ = {
+			isa = PBXGroup;
+			children = (
+				24583EAD2411149D008D0780 /* KitaBisaMovieUITests.swift */,
+				24583EAF2411149D008D0780 /* Info.plist */,
+				24583EB52411150A008D0780 /* XCUIApplication+Extension.swift */,
+			);
+			path = KitaBisaMovieUITests;
+			sourceTree = "<group>";
+		};
 		248B4110240FEED900B3CCC7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				24D2CD4B240F7E6E00CED69F /* KitaBisaMovie */,
+				24583EAC2411149D008D0780 /* KitaBisaMovieUITests */,
 				24D2CD4A240F7E6E00CED69F /* Products */,
 				B97C6A4E65DB00D2EEA4C4E3 /* Pods */,
 				B194B51FA47F25268F285A4F /* Frameworks */,
@@ -122,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				24D2CD49240F7E6E00CED69F /* KitaBisaMovie.app */,
+				24583EAB2411149D008D0780 /* KitaBisaMovieUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -261,6 +298,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		24583EAA2411149D008D0780 /* KitaBisaMovieUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24583EB42411149D008D0780 /* Build configuration list for PBXNativeTarget "KitaBisaMovieUITests" */;
+			buildPhases = (
+				24583EA72411149D008D0780 /* Sources */,
+				24583EA82411149D008D0780 /* Frameworks */,
+				24583EA92411149D008D0780 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24583EB12411149D008D0780 /* PBXTargetDependency */,
+			);
+			name = KitaBisaMovieUITests;
+			productName = KitaBisaMovieUITests;
+			productReference = 24583EAB2411149D008D0780 /* KitaBisaMovieUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		24D2CD48240F7E6E00CED69F /* KitaBisaMovie */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 24D2CD5D240F7E7A00CED69F /* Build configuration list for PBXNativeTarget "KitaBisaMovie" */;
@@ -290,6 +345,10 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = rasyadh;
 				TargetAttributes = {
+					24583EAA2411149D008D0780 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 24D2CD48240F7E6E00CED69F;
+					};
 					24D2CD48240F7E6E00CED69F = {
 						CreatedOnToolsVersion = 11.3;
 					};
@@ -309,11 +368,20 @@
 			projectRoot = "";
 			targets = (
 				24D2CD48240F7E6E00CED69F /* KitaBisaMovie */,
+				24583EAA2411149D008D0780 /* KitaBisaMovieUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		24583EA92411149D008D0780 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24583EB824111AE6008D0780 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		24D2CD47240F7E6E00CED69F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -376,6 +444,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		24583EA72411149D008D0780 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24583EB72411157D008D0780 /* Localify.swift in Sources */,
+				24583EAE2411149D008D0780 /* KitaBisaMovieUITests.swift in Sources */,
+				24583EB62411150A008D0780 /* XCUIApplication+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		24D2CD45240F7E6E00CED69F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -409,6 +487,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		24583EB12411149D008D0780 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24D2CD48240F7E6E00CED69F /* KitaBisaMovie */;
+			targetProxy = 24583EB02411149D008D0780 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		248B40EC240F970300B3CCC7 /* Localizable.strings */ = {
@@ -446,6 +532,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		24583EB22411149D008D0780 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DSQS33Z9P9;
+				INFOPLIST_FILE = KitaBisaMovieUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.rasyadh.KitaBisaMovieUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KitaBisaMovie;
+			};
+			name = Debug;
+		};
+		24583EB32411149D008D0780 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DSQS33Z9P9;
+				INFOPLIST_FILE = KitaBisaMovieUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.rasyadh.KitaBisaMovieUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KitaBisaMovie;
+			};
+			name = Release;
+		};
 		24D2CD5B240F7E7A00CED69F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -603,6 +727,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		24583EB42411149D008D0780 /* Build configuration list for PBXNativeTarget "KitaBisaMovieUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24583EB22411149D008D0780 /* Debug */,
+				24583EB32411149D008D0780 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		24D2CD44240F7E6E00CED69F /* Build configuration list for PBXProject "KitaBisaMovie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
