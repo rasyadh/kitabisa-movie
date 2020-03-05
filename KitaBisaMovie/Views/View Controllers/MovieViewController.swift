@@ -26,6 +26,7 @@ class MovieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.accessibilityIdentifier = "movieView"
         navigationItem.title = movie.title
         
         tableView.register(

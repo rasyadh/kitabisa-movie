@@ -28,12 +28,15 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.accessibilityIdentifier = "homeView"
         navigationItem.title = Localify.get("app.name")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
+        let favouriteItem = UIBarButtonItem(
             image: UIImage(named: "ic_heart")?.withRenderingMode(.alwaysOriginal),
             style: .plain,
             target: self,
             action: #selector(favouriteMovies(_:)))
+        favouriteItem.accessibilityIdentifier = "favouriteItem"
+        navigationItem.rightBarButtonItem = favouriteItem
         
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
@@ -95,7 +98,7 @@ class HomeViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func categoryTouchUpInside(_ sender: Any) {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: Localify.get("home.button.category"), message: nil, preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: Localify.get("category.action.popular"), style: .default, handler: { alert in
             self.movies.removeAll()
             self.getMoviesByCategory(category: .popular, page: 1)

@@ -27,6 +27,7 @@ class FavouriteMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.accessibilityIdentifier = "favouriteMovieView"
         navigationItem.title = Localify.get("favourite_movie.title")
         
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
