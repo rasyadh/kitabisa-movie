@@ -80,6 +80,12 @@ extension FavouriteMoviesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if movies.isEmpty {
+            tableView.setEmptyView(
+                title: Localify.get("empty_state.favourite_movies.title"))
+        } else {
+            tableView.restore(style: .none)
+        }
         return movies.count
     }
     

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		245AAF1F2410942000EACE1B /* FavouriteMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AAF1E2410942000EACE1B /* FavouriteMoviesViewController.swift */; };
+		245AAF2124109EAC00EACE1B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AAF2024109EAC00EACE1B /* UITableView+Extension.swift */; };
+		245AAF2424109ED800EACE1B /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245AAF2224109ED800EACE1B /* EmptyTableViewCell.swift */; };
+		245AAF2524109ED800EACE1B /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 245AAF2324109ED800EACE1B /* EmptyTableViewCell.xib */; };
 		248B40E5240F955B00B3CCC7 /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248B40E4240F955B00B3CCC7 /* Formatter+Extension.swift */; };
 		248B40E7240F95D900B3CCC7 /* Localify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248B40E6240F95D900B3CCC7 /* Localify.swift */; };
 		248B40EA240F970300B3CCC7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 248B40EC240F970300B3CCC7 /* Localizable.strings */; };
@@ -45,6 +48,9 @@
 /* Begin PBXFileReference section */
 		208C8401AC59D0C188852445 /* Pods_KitaBisaMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitaBisaMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		245AAF1E2410942000EACE1B /* FavouriteMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteMoviesViewController.swift; sourceTree = "<group>"; };
+		245AAF2024109EAC00EACE1B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		245AAF2224109ED800EACE1B /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
+		245AAF2324109ED800EACE1B /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
 		248B40E4240F955B00B3CCC7 /* Formatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extension.swift"; sourceTree = "<group>"; };
 		248B40E6240F95D900B3CCC7 /* Localify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localify.swift; sourceTree = "<group>"; };
 		248B40EB240F970300B3CCC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -152,9 +158,10 @@
 			children = (
 				248B40E4240F955B00B3CCC7 /* Formatter+Extension.swift */,
 				248B40F2240F975000B3CCC7 /* String+Extension.swift */,
+				248B40F8240F986900B3CCC7 /* UIColor+Extension.swift */,
+				245AAF2024109EAC00EACE1B /* UITableView+Extension.swift */,
 				248B40F4240F977800B3CCC7 /* UIView+Extension.swift */,
 				248B40F6240F979F00B3CCC7 /* UIViewController+Extension.swift */,
-				248B40F8240F986900B3CCC7 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -191,6 +198,8 @@
 		24D2CD65240F7EAE00CED69F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				245AAF2224109ED800EACE1B /* EmptyTableViewCell.swift */,
+				245AAF2324109ED800EACE1B /* EmptyTableViewCell.xib */,
 				248B40FA240FA9C600B3CCC7 /* MovieCardTableViewCell.swift */,
 				248B40FB240FA9C600B3CCC7 /* MovieCardTableViewCell.xib */,
 				248B4102240FD59D00B3CCC7 /* MovieInfoTableViewCell.swift */,
@@ -310,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				248B410F240FDE6C00B3CCC7 /* ReviewTableViewCell.xib in Resources */,
+				245AAF2524109ED800EACE1B /* EmptyTableViewCell.xib in Resources */,
 				248B40EA240F970300B3CCC7 /* Localizable.strings in Resources */,
 				24D2CD59240F7E7A00CED69F /* LaunchScreen.storyboard in Resources */,
 				248B4105240FD59D00B3CCC7 /* MovieInfoTableViewCell.xib in Resources */,
@@ -393,6 +403,8 @@
 				248B410E240FDE6C00B3CCC7 /* ReviewTableViewCell.swift in Sources */,
 				24D2CD72240F87A000CED69F /* ManagerViewController.swift in Sources */,
 				248B40FF240FB57200B3CCC7 /* Movie.swift in Sources */,
+				245AAF2424109ED800EACE1B /* EmptyTableViewCell.swift in Sources */,
+				245AAF2124109EAC00EACE1B /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

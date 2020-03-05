@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 
 class HomeViewController: UIViewController {
-
+    
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var categoryButton: UIButton!
@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.title = Localify.get("app.name")
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "ic_heart")?.withRenderingMode(.alwaysOriginal),
@@ -147,6 +147,12 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if movies.isEmpty {
+            tableView.setEmptyView(
+                title: Localify.get("empty_state.movies.title"))
+        } else {
+            tableView.restore(style: .none)
+        }
         return movies.count
     }
     
